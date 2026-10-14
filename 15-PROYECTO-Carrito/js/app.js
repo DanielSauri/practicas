@@ -5,7 +5,7 @@ const vaciarCarrito = document.querySelector("#vaciar-carrito");
 const btnEliminar = document.querySelector("#btnEliminar");
 let articulosCarrito = [];
 
-document.addEventListener("click", (e) => {
+document.addEventListener('click', e => {
     if(e.target.classList.contains('agregar-carrito')){
         e.preventDefault();
         let curso = e.target.parentElement.parentElement;
@@ -13,8 +13,9 @@ document.addEventListener("click", (e) => {
     }
 })
 
-vaciarCarrito.addEventListener('click', (e) => eliminarCarrito(e));
-btnEliminar.addEventListener('click', () => {console.log("eliminar curso")})
+carrito.addEventListener('click', e => eliminarProducto(e));
+
+vaciarCarrito.addEventListener('click', e => eliminarCarrito(e));
 
 function obtenerDatos(curso) {
     const cursoInfo = {
@@ -24,11 +25,7 @@ function obtenerDatos(curso) {
         id: curso.querySelector('a').getAttribute('data-id'), // Necesite ayuda aqui
         cantidad: 1
     }
-    guardarDatos(cursoInfo);
-}
 
-function guardarDatos(cursoInfo) {        
-    limpiarHtml();
     const existe = articulosCarrito.some( curso => curso.id == cursoInfo.id);
     if(!existe){
         articulosCarrito = [...articulosCarrito, cursoInfo];
@@ -43,13 +40,17 @@ function guardarDatos(cursoInfo) {
         })
         articulosCarrito = cursos
     }
+    guardarDatos(articulosCarrito);
+}
 
+function guardarDatos(articulosCarrito) {        
+    limpiarHtml();
     //Necesite ayuda aqui para usar el forEach y para usar curso dentro de innerHtml
     articulosCarrito.forEach( curso => {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>
-                <img src="${curso.imagen.src}" width="130px"></img>
+                <img src="${curso.imagen.src}" width="130px">
             </td>
             <td>
                 <h4>${curso.nombre.textContent}</h4>
@@ -61,9 +62,7 @@ function guardarDatos(cursoInfo) {
                 <p align="center">${curso.cantidad}</p>
             </td>
             <td>
-                <div>
-                    <button id="btnEliminar">${"X"}</button>
-                </div>
+                <a href="#" class="borrar-curso" data-id="${curso.id}">X</a>
             </td>
         `
         contenedorCarrito.appendChild(row);
@@ -84,4 +83,22 @@ function eliminarCarrito(e) {
     e.preventDefault();
     articulosCarrito = [];
     limpiarHtml();
+}
+
+function eliminarProducto(e) {
+    const id = e.target.getAttribute('data-id');
+    e.preventDefault();
+    articulosCarrito = articulosCarrito.filter( curso => {
+        if(curso.id == id){
+            if(curso.cantidad == 1){
+                return curso.id !== id
+            }else {
+                return curso.cantidad--
+            }
+        }else {
+            return curso;
+        }
+    })
+
+    guardarDatos(articulosCarrito)
 }
