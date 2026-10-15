@@ -19,9 +19,9 @@ vaciarCarrito.addEventListener('click', e => eliminarCarrito(e));
 
 function obtenerDatos(curso) {
     const cursoInfo = {
-        imagen: curso.children[0],
-        nombre: curso.children[1].children[0],
-        precio: curso.children[1].children[1],
+        imagen: curso.querySelector('img').src,
+        nombre: curso.querySelector('h4').textContent,
+        precio: curso.querySelector('span').textContent,
         id: curso.querySelector('a').getAttribute('data-id'), // Necesite ayuda aqui
         cantidad: 1
     }
@@ -50,13 +50,13 @@ function guardarDatos(articulosCarrito) {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>
-                <img src="${curso.imagen.src}" width="130px">
+                <img src="${curso.imagen}" width="130px">
             </td>
             <td>
-                <h4>${curso.nombre.textContent}</h4>
+                <h4>${curso.nombre}</h4>
             </td>
             <td>
-                <p>${curso.precio.textContent}</p>
+                <p>${curso.precio}</p>
             </td>
             <td>
                 <p align="center">${curso.cantidad}</p>
