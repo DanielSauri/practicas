@@ -8,59 +8,64 @@ const spinner = document.querySelector('#spinner');
 const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // event listeners
-email.addEventListener('blur', e => validarFormulario(e));
-asunto.addEventListener('blur', e => validarFormulario(e));
-mensaje.addEventListener('blur', e => validarFormulario(e));
+email.addEventListener('input', e => validarFormulario(e));
+asunto.addEventListener('input', e => validarFormulario(e));
+mensaje.addEventListener('input', e => validarFormulario(e));
 formulario.addEventListener('submit', e => {
     e.preventDefault();
-    const alerta = document.querySelector('.alerta');
-    if(asunto.value !== '' && mensaje.value !== '' && regex.test(email.value)){
+    const referencia = e.target.parentElement;
+    const alerta = referencia.querySelector('.alerta');
+    if(asunto.value.trim() !== '' && mensaje.value.trim() !== '' && regex.test(email.value)){
+        eliminarAlerta(alerta);
         mostrarSpinner();
         
-        alerta.remove();
         setTimeout(() => {
             spinner.classList.add('hidden');
-            setTimeout( () => {
-                mostrarAlerta("success", "email enviado correctamente")
-                setTimeout(() => {
-                    document.querySelector('.alerta').remove();
-                    formulario.reset();
-                    btnEnviar.style = 'opacity: 0.5';
-                    btnEnviar.disabled = true;
-                }, 3000);
-            }, 500);
+            formulario.reset();
+            btnEnviar.style = 'opacity: 0.5';
+            btnEnviar.disabled = true;
+
+            mostrarAlerta("success", "email enviado correctamente",alerta,referencia)
+            setTimeout(() => {
+                eliminarAlerta(document.querySelector('.alerta'));
+                btnReset.style = 'opacity: 1;'
+                btnReset.disabled = false;
+            }, 3000);
         }, 3000);
     }else {
-        mostrarAlerta('error','compruebe que todos los datos sean validos');
+        mostrarAlerta('error','compruebe que todos los datos sean validos',alerta,referencia);
     }
 })
 btnReset.addEventListener('click', () => {
-    mostrarAlerta('success', 'datos eliminados correctamente');
+    mostrarAlerta('success', 'datos eliminados correctamente','','document');
+    const alerta = formulario.querySelectorAll('.alerta');
     btnEnviar.style = 'opacity: 0.5;'
     btnEnviar.disabled = true;
-    setTimeout(() => document.querySelector('.alerta').remove(), 2000);
+    setTimeout(() => {
+        alerta.forEach( alerta => {
+            eliminarAlerta(alerta);
+        })
+    }, 2000);
 })
 
 // functions
 function validarFormulario(e) {
-    const input = e.target;
+    const referencia = e.target.parentElement;
+    const alerta = referencia.querySelector('.alerta');
     btnReset.style = 'opacity: 1;'
     btnReset.disabled = false;
 
-    if(input.value !== ''){
-        if(input.id === 'email'){
-            if(regex.test(email.value)){
-                mostrarAlerta('success','email correcto');
-            }else {
-                mostrarAlerta('error','email no valido');
+    if(e.target.value.trim() !== ''){
+        if(e.target.id === 'email'){
+            if(!regex.test(email.value)){
+                mostrarAlerta('error','email no valido',alerta,referencia);
             }
-        }else{
-            mostrarAlerta('success',`${input.id} correcto`);
         }
+        eliminarAlerta(alerta)
     }else {
-        mostrarAlerta('error','campo obligatorio');
+        mostrarAlerta('error','campo obligatorio',alerta,referencia);
     }
-    if(email.value !== '' && asunto.value !== '' && mensaje.value !== '' && regex.test(email.value)){
+    if(email.value.trim() !== '' && asunto.value.trim() !== '' && mensaje.value.trim() !== '' && regex.test(email.value)){
         btnEnviar.style = 'opacity: 1;'
         btnEnviar.disabled = false;
     }else {
@@ -69,30 +74,29 @@ function validarFormulario(e) {
     }
 }
 
-function mostrarAlerta(type,mensaje) {
-    const alerta = document.querySelector('.alerta');
+function mostrarAlerta(tipo,mensaje,alerta,referencia) {
     const div = document.createElement('DIV');
     const p = document.createElement('P');
     
-    div.classList.add('text-center','p-3','alerta');
-
-    if(type === 'error'){
-        div.classList.add('bg-red-600');
-    }else {
-        div.classList.add('bg-green-500');
-    }
-
-    if(alerta) {
-        eliminarAlerta(alerta);
-    }
+    div.classList.add('text-center','text-white','p-3','alerta');
 
     p.textContent = mensaje;
     div.appendChild(p);
-    formulario.appendChild(div);
+    if(tipo !== "error") {
+        div.classList.add('bg-green-500');
+        formulario.appendChild(div);
+        return;
+    }
+    
+    div.classList.add('bg-red-600');
+    eliminarAlerta(alerta);
+    referencia.appendChild(div);
 }
 
 function eliminarAlerta(alerta) {
-    alerta.remove();
+    if(alerta) {
+        alerta.remove();
+    }
 }
 
 function mostrarSpinner() {
