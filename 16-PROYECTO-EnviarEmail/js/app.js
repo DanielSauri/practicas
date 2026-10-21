@@ -1,5 +1,6 @@
 const formulario = document.querySelector('#formulario');
 const email = document.querySelector('#email');
+const emailCC = document.querySelector('#emailCC');
 const asunto = document.querySelector('#asunto');
 const mensaje = document.querySelector('#mensaje');
 const btnEnviar = document.querySelector('button[type=submit]');
@@ -9,12 +10,16 @@ const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // event listeners
 email.addEventListener('input', e => validarFormulario(e));
+emailCC.addEventListener('input', e => validarFormulario(e));
 asunto.addEventListener('input', e => validarFormulario(e));
 mensaje.addEventListener('input', e => validarFormulario(e));
 formulario.addEventListener('submit', e => {
     e.preventDefault();
     const referencia = e.target.parentElement;
     const alerta = referencia.querySelector('.alerta');
+    if(emailCC.value.trim() !== '' && !regex.test(emailCC.value)){
+        return;
+    }
     if(asunto.value.trim() !== '' && mensaje.value.trim() !== '' && regex.test(email.value)){
         eliminarAlerta(alerta);
         mostrarSpinner();
@@ -55,22 +60,46 @@ function validarFormulario(e) {
     btnReset.style = 'opacity: 1;'
     btnReset.disabled = false;
 
-    if(e.target.value.trim() !== ''){
-        if(e.target.id === 'email'){
-            if(!regex.test(email.value)){
-                mostrarAlerta('error','email no valido',alerta,referencia);
+    if(e.target.id === 'emailCC') {
+        if(e.target.value.trim() === ''){
+            eliminarAlerta(alerta);
+        }else {
+            if(!regex.test(emailCC.value)){
+               mostrarAlerta('error','email no valido',alerta,referencia);
+               btnEnviar.style = 'opacity: 0.5;'
+               btnEnviar.disabled = true;
+               return;
+            }
+            eliminarAlerta(alerta);
+        }
+    }else{
+        if(e.target.value.trim() !== ''){
+            if(e.target.id === 'email'){
+                if(!regex.test(email.value)){
+                    mostrarAlerta('error','email no valido',alerta,referencia);
+                }
+            }
+            if(emailCC.value.trim() !== '' && !regex.test(emailCC.value)) {
+                btnEnviar.style = 'opacity: 0.5;'
+                btnEnviar.disabled = true;
+                eliminarAlerta(alerta);
+                return;
+            }
+            eliminarAlerta(alerta)
+        }else {
+            if(e.target.id !== 'emailCC') {
+                mostrarAlerta('error','campo obligatorio',alerta,referencia);
+                btnEnviar.style = 'opacity: 0.5;'
+                btnEnviar.disabled = true;
+            }else {
+                eliminarAlerta(alerta);
             }
         }
-        eliminarAlerta(alerta)
-    }else {
-        mostrarAlerta('error','campo obligatorio',alerta,referencia);
     }
+    
     if(email.value.trim() !== '' && asunto.value.trim() !== '' && mensaje.value.trim() !== '' && regex.test(email.value)){
         btnEnviar.style = 'opacity: 1;'
         btnEnviar.disabled = false;
-    }else {
-        btnEnviar.style = 'opacity: 0.5;'
-        btnEnviar.disabled = true;
     }
 }
 
