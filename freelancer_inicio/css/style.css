@@ -26,6 +26,17 @@ html {
     cursor: pointer;
 }
 
+.success {
+    background-color: rgb(21, 187, 21);
+    color: #f2f2f2;
+    margin: .5rem 0 0;
+    padding: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5rem;
+    border-radius: .7rem;
+}
+
 .error {
     background-color: rgb(175, 8, 8);
     color: #f2f2f2;

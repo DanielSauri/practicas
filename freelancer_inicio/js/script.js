@@ -51,12 +51,12 @@ formulario.addEventListener('submit', e => {
         }, 2000);
 
         setTimeout(() => {
-            mostrarAlerta(formulario, 'formulario enviado correctamente');
+            mostrarAlerta(formulario, 'gracias por comunicarse con nosotros');
         }, 2000);
         
         setTimeout(() => {
             formulario.lastChild.remove();
-        }, 4500);
+        }, 5000);
     }
 })
 
@@ -132,7 +132,11 @@ function validarDatos(campo) {
 function mostrarAlerta(campo, mensaje) {
     const p = document.createElement('p');
     p.textContent = `${mensaje}`;
-    p.classList.add('error');
+    if( campo.classList.contains('formulario') ) {
+        p.classList.add('success');
+    }else {
+        p.classList.add('error');
+    }
     campo.appendChild(p);
 
     visibilidadEnviar(false);
