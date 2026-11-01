@@ -1,12 +1,12 @@
 const nombre = document.querySelector('input[type="text"]');
-const telefono = document.querySelector('input[type="number"]');
+const telefono = document.querySelector('input[type="tel"]');
 const correo = document.querySelector('input[type="email"]');
 const mensaje = document.querySelector('#mensaje');
 const formulario = document.querySelector('.formulario');
 const spinner = document.querySelector('#spinner');
 const enviar = document.querySelector('input[type="submit"]');
-const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;   
-
+const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const regexTel = /^\+?[0-9]{9,15}$/;
 
 let datos = {
     nombre: '',
@@ -22,14 +22,20 @@ mensaje.addEventListener('input', e => obtenerDatos(e.target) );
 
 formulario.addEventListener('submit', e => {
     e.preventDefault();
-    if(nombre.value.trim() === '' && telefono.value === '' && correo.value.trim() === '' && mensaje.value.trim() && !regex.test(correo.value)) {
-        enviar.classList.remove('btn-active');
-        enviar.classList.add('btn-disabled')
-        enviar.disabled = true;
+
+    if( telefono.value !== '' ){
+        if( !regexTel.test(telefono.value) ){
+            eliminarAlerta( telefono.parentElement );
+            mostrarAlerta( telefono.parentElement, 'numero no valido' );
+            return;
+        }
+    }
+
+    if(nombre.value.trim() === '' || telefono.value === '' || correo.value.trim() === '' || mensaje.value.trim() === '' || !regex.test(correo.value)) {
+        visibilidadEnviar(false);
+        return;
     }else {
-        enviar.classList.remove('btn-active');
-        enviar.classList.add('btn-disabled')
-        enviar.disabled = true;
+        visibilidadEnviar(false);
 
         spinner.hidden = false;
 
@@ -37,14 +43,34 @@ formulario.addEventListener('submit', e => {
             formulario.reset();
             datos = {
                 nombre: '',
-                numero: '',
+                telefono: '',
                 correo: '',
                 mensaje: ''
             }
             spinner.hidden = true;
         }, 2000);
+
+        setTimeout(() => {
+            mostrarAlerta(formulario, 'formulario enviado correctamente');
+        }, 2000);
+        
+        setTimeout(() => {
+            formulario.lastChild.remove();
+        }, 4500);
     }
 })
+
+function visibilidadEnviar(activo) {
+    if(activo) {
+        enviar.classList.remove('btn-disabled');
+        enviar.classList.add('btn-active')
+        enviar.disabled = false;
+    }else {
+        enviar.classList.remove('btn-active');
+        enviar.classList.add('btn-disabled')
+        enviar.disabled = true;
+    }
+}
 
 function obtenerDatos(campo) {
     if(campo.id === 'nombre'){
@@ -77,12 +103,23 @@ function validarDatos(campo) {
             }
         }
     }
-    if(nombre.trim() !== '' && telefono !== '' && correo.trim() !== '' && mensaje.trim() && regex.test(correo)) {
-        enviar.classList.remove('btn-disabled');
-        enviar.classList.add('btn-active')
-        enviar.disabled = false;
+    
+    if( campo.id === 'numero' ) {
+        if( telefono !== '' ){
+            if( !regexTel.test(telefono) ){
+                eliminarAlerta( campo.parentElement );
+                mostrarAlerta( campo.parentElement, 'numero no valido' );
+                visibilidadEnviar(false);
+                return;
+            }
+        }
     }
-    if(!campo.value.trim()) {
+
+    if(nombre.trim() !== '' && telefono !== '' && correo.trim() !== '' && mensaje.trim() !== '' && regex.test(correo) && regexTel.test(telefono) ){
+        visibilidadEnviar(true);
+    }
+    
+    if(campo.value.trim() === '') {
         eliminarAlerta(campo.parentElement);
         mostrarAlerta(campo.parentElement, 'todos los campos son obligatorios');
         return;
@@ -98,9 +135,7 @@ function mostrarAlerta(campo, mensaje) {
     p.classList.add('error');
     campo.appendChild(p);
 
-    enviar.classList.remove('btn-active');
-    enviar.classList.add('btn-disabled');
-    enviar.disabled = true;
+    visibilidadEnviar(false);
 }
 
 function eliminarAlerta(campo) {
