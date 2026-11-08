@@ -22,7 +22,7 @@ function obtenerDatos(curso) {
         imagen: curso.querySelector('img').src,
         nombre: curso.querySelector('h4').textContent,
         precio: curso.querySelector('span').textContent,
-        id: curso.querySelector('a').getAttribute('data-id'), // Necesite ayuda aqui
+        id: curso.querySelector('a').getAttribute('data-id'),
         cantidad: 1
     }
 

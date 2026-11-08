@@ -53,7 +53,6 @@ btnReset.addEventListener('click', () => {
     }, 2000);
 })
 
-// functions
 function validarFormulario(e) {
     const referencia = e.target.parentElement;
     const alerta = referencia.querySelector('.alerta');

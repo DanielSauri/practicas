@@ -1,1 +1,10 @@
 .DS_Store
+
+# Proyectos locales que no se publicaran
+/CursoJSModerno/*
+!/CursoJSModerno/15-PROYECTO-Carrito/
+!/CursoJSModerno/16-PROYECTO-EnviarEmail/
+
+/Desarrollo_Web_Completo/*
+!/Desarrollo_Web_Completo/FrontEndStore/
+!/Desarrollo_Web_Completo/freelancer_inicio/
