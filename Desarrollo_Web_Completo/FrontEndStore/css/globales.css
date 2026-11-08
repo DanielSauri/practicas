@@ -1,0 +1,78 @@
+:root {
+    --primario: #9C27B0;
+    --primarioOscuro: #89119D;
+    --secundario: #FFCE00;
+    --secundarioOscuro: rgb(233, 187, 2);
+    --blanco: #FFF;
+    --negro: #000;
+    --fuentePrincipal: 'Staatliches', cursive;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: var(--fuentePrincipal);
+    text-transform: uppercase; /* En caso de que la fuente principal no cargue se muestre en mayuscula */
+    background-color: var(--primario);
+    font-size: 16px;
+}
+
+/* HEADER */
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 16rem;
+}
+
+/* NAVEGACION */
+
+.nav {
+    background-color: var(--primarioOscuro);
+    font-size: 3rem;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.nav__tienda {
+    margin: 0 1.2rem;
+}
+
+/* CONTENIDO PRINCIPAL */
+
+.main__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.main__tittle {
+    text-align: center;
+    color: var(--secundario);
+    font-size: 4rem
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+}
+
+
+@media (max-width: 860px) {
+    footer {
+        margin: 0 3rem;
+    }
+}

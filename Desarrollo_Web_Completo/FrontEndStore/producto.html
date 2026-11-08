@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontEndStore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/globales.css">
+    <link rel="stylesheet" href="css/producto.css">
+</head>
+<body>
+    <header class="header">
+        <a href="index.html">
+            <img src="img/logo.png" alt="logo">
+        </a>
+    </header>
+    <nav class="nav">
+        <a href="index.html" class="nav__tienda">tienda</a>
+        <a href="nosotros.html" class="nav__nosotros">nosotros</a>
+    </nav>
+    <main>
+        <h1 class="main__tittle">react js</h1>
+        <section class="main__container">
+            <img src="img/3.jpg" class="main__container__img" alt="nosotros">
+            <div class="main__container__datos">
+                <p class="main__container__datos__texto">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro debitis tenetur quis illo! Itaque soluta nam consectetur, excepturi quos optio blanditiis magnam delectus earum ad recusandae reprehenderit accusantium praesentium temporibus?</p>
+                <form class="main__container__datos__campos">
+                    <select class="main__container__datos__campos__select">
+                        <option disabled selected>--seleccionar talla--</option>
+                        <option>chica</option>
+                        <option>mediana</option>
+                        <option>grande</option>
+                    </select>
+                    <input class="main__container__datos__campos__cantidad" min="1" type="number" placeholder="cantidad">
+                </form>
+                <input class="main__container__datos__btn" type="submit" value="agregar al carrito">
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer__p">front end store - todos los derechos reservados 2026.</p>
+        </footer>
+    </main>
+</body>
+</html>

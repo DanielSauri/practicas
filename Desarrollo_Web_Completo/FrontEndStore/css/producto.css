@@ -1,0 +1,91 @@
+/* NAVEGACION */
+
+.nav {
+    font-weight: 400;
+}
+
+.nav__tienda {
+    color: var(--secundario);
+}
+
+.nav__nosotros {
+    color: var(--blanco);
+}
+
+.nav__nosotros:hover {
+    color: var(--secundario);
+}
+
+/* CONTENIDO PRINCIPAL */
+
+.main__tittle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 4rem;
+    color: var(--secundario);
+}
+
+.main__container__img {
+    width: 100%;
+}
+
+.main__container__datos__texto {
+    font-size: 2rem;
+    color: var(--blanco);
+    text-transform: capitalize;
+}
+
+.main__container__datos__campos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.main__container__datos__campos__select {
+    text-transform: capitalize;
+}
+
+.main__container__datos__campos__select,
+.main__container__datos__campos__cantidad {
+    padding: 1rem;
+    background-color: var(--primario);
+    border-radius: 1rem;
+    border-color: var(--primarioOscuro);
+    color: #f2f2f2;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.main__container__datos__btn {
+    width: 100%;
+    margin: 2rem 0;
+    padding: 2rem;
+    background-color: var(--secundario);
+    font-size: 2rem;
+}
+
+/* FOOTER */
+
+.footer {
+    position: absolute;
+    background-color: var(--primarioOscuro);
+    width: 100%;
+    margin: 2rem 0 0;
+}
+
+.footer__p {
+    position: relative;
+    text-align: center;
+    color: var(--blanco);
+    font-size: 2.3rem;
+}
+
+@media (max-width: 900px) {
+    .main__container {
+        grid-template-columns: 1fr;
+    }
+
+    .main__container__datos__campos {
+        grid-template-columns: 1fr;
+    }
+}
