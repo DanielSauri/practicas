@@ -1,0 +1,45 @@
+
+.contenido-principal {
+    display: block;
+}
+
+.contenido-principal h1 {
+    color: var(--negro);
+    text-align: center;
+    margin-bottom: 4rem;
+    font-weight: bold;
+}
+
+.contenido-principal h3 {
+    color: var(--negro);
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.info p {
+    font-weight: bold;
+}
+
+.info .texto,
+.info span {
+    font-weight: normal;
+    font-size: 1.7rem;
+    line-height: 2.8rem;
+}
+
+.cursos {
+    display: flex;
+    gap: 2rem;
+    border-bottom: .2rem solid var(--gris);
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+}
+
+.cursos:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.cursos img {
+    width: 30%;
+}

@@ -9,6 +9,7 @@ El sitio cuenta con las siguientes secciones:
 - Nosotros
 - Cursos
 - Contacto
+- Entrada
 
 ## Tecnologias
 
