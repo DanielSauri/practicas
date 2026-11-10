@@ -1,0 +1,24 @@
+
+.contenido-principal {
+    display: block;
+    width: 80%;
+    margin: 0 auto 3rem;
+    padding: 0;
+}
+
+.contenido-principal h1 {
+    color: var(--negro);
+    text-align: center;
+    margin: 2rem 0;
+    font-weight: bold;
+}
+
+.parrafos p{
+    font-size: 1.7rem;
+    line-height: 3rem;
+    margin: 0 0 1rem;
+}
+
+.parrafos p:first-child {
+    margin-top: 2rem;
+}

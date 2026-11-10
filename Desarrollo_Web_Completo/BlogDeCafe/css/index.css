@@ -1,0 +1,85 @@
+
+/* MAIN */
+
+.contenido-principal {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: 2fr 1fr;
+    width: 90%;
+    margin: 0 auto;
+    padding: 4rem 0;
+}
+
+.blog h2 {
+    font-size: 3.2rem;
+    font-weight: bold;
+    margin-bottom: 3.5rem;
+}
+
+.entradas {
+    border-bottom: .2rem solid var(--gris);
+    margin: 2rem 0;
+}
+
+.entradas:last-child {
+    border-bottom: none;
+    margin: 0;
+}
+
+.entradas img {
+    width: 100%;
+}
+
+.entradas h3 {
+    margin: .8rem 0 2rem;
+    font-size: 2.8rem;
+    font-weight: bold;
+}
+
+.entradas p {
+    font-size: 1.7rem;
+    line-height: 3rem;
+}
+
+.entradas .enlace-entrada {
+    display: block;
+    width: 25%;
+}
+
+.entradas .entrada {
+    padding: 1.5rem;
+    text-align: center;
+    background-color: var(--negro);
+    color: var(--blanco);
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* SIDEBAR */
+
+.sidebar h2 {
+    font-size: 3.2rem;
+    font-weight: bold;
+    margin-bottom: 3.5rem;
+}
+
+.sidebar h3 {
+    font-size: 2.8rem;
+    font-weight: bold;
+}
+
+.cursos p {
+    font-weight: bold;
+}
+
+.cursos span {
+    font-weight: normal;
+}
+
+.cursos .informacion {
+    padding: 2rem;
+    text-align: center;
+    color: var(--blanco);
+    background-color: var(--primario);
+    margin: 3rem 0;
+}
