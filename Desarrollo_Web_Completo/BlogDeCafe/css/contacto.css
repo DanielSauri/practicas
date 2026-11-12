@@ -20,7 +20,7 @@
 
 .formulario {
     position: absolute;
-    top: 100rem;
+    top: 105rem;
     left: 10%;
     display: flex;
     flex-direction: column;
@@ -37,10 +37,6 @@ input {
     padding: 1rem;
 }
 
-textarea {
-    height: 15rem;
-}
-
 input:last-child {
     margin-top: 2rem;
     width: 20%;
@@ -54,4 +50,16 @@ input:last-child {
 
 .footer {
     margin-top: 40rem;
+}
+
+@media (max-width: 768px) {
+    input:last-child {
+        width: auto;
+    }
+}
+
+@media (max-width: 380px) {
+    .formulario {
+        top: 95rem;
+    }
 }

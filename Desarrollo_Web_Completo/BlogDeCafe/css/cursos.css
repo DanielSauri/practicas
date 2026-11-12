@@ -43,3 +43,21 @@
 .cursos img {
     width: 30%;
 }
+
+@media (max-width: 768px) {
+    .contenido-principal {
+        padding: 3rem 1rem;
+    }
+    .cursos {
+        display: block;
+        margin-bottom: 6rem;
+    }
+    .cursos img {
+        width: 100%;
+        height: 90%;
+        margin-bottom: 2rem;
+    }
+    .cursos h3 {
+        font-size: 2.7rem;
+    }
+}

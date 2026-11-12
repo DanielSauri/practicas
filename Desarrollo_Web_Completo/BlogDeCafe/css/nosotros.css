@@ -28,3 +28,9 @@
     line-height: 2.5rem;
     margin: 0 0 1rem;
 }
+
+@media (max-width: 980px) {
+    .main {
+        grid-template-columns: 1fr;
+    }
+}
