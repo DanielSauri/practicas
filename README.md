@@ -1,7 +1,7 @@
 # Practicas desarrollo web 
 Repositorio donde almaceno los proyectos y ejercicios que realizo durante mi aprendizaje de desarrollo web
 
-##Contenido
+## Contenido
 
 ### Desarrollo web completo
 Proyectos realizados en el curso de desarrollo web completo en Udemy
