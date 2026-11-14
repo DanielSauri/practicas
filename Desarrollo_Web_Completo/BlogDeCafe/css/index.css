@@ -89,7 +89,7 @@
     margin: 3rem 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
     .contenido-principal {
         grid-template-columns: 1fr;
     }
@@ -97,6 +97,9 @@
     .entradas {
         margin-bottom:6rem;
         line-height: 3rem;
+    }
+    .entradas .enlace-entrada {
+        width: 100%;
     }
     .entradas p {
         line-height: 2rem;
@@ -109,14 +112,8 @@
     }
 }
 
-@media (max-width: 1039px) {
-    .entradas .enlace-entrada {
-        width: 100%;
-    }
-}
-
 @media (min-width: 1040px) {
     .entradas .enlace-entrada {
-        display: block;
+        display: inline-block;
     }
 }

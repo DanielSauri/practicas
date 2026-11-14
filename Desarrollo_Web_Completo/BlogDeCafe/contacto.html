@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog de café donde podras encontrar cursos y talleres">
     <title>Blog De Café</title>
     <link rel="preload" href="css/normalize.css" as="style">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;family=PT+Sans:wght@400;700&amp;display=swap" crossorigin="crossorigin" as="font">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;family=PT+Sans:wght@400;700&amp;display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;family=PT+Sans:wght@400;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/globales.css">
     <link rel="stylesheet" href="css/contacto.css">
@@ -26,10 +27,9 @@
             <p>Aprende de los expertos con las mejores recetas y consejos</p>
         </div>
     </header>
-    <div class="contenedor contenido-principal">
+    <main class="contenedor contenido-principal">
         <h1>Contacto</h1>
-        <main class="main">
-            <img src="img/contacto.jpg" alt="Contactanos">
+        <div class="contacto__bg"></div>
             <form class="formulario">
                 <label for="nombre">Nombre:</label>
                 <input type="text" name="nombre" placeholder="Tu nombre" id="nombre">
@@ -39,8 +39,7 @@
                 <textarea name="mensaje" id="mensaje"></textarea>
                 <input type="submit" id="submit">
             </form>
-        </main>
-    </div>
+    </main>
     <footer class="footer">
         <div class="contenedor">
             <a href="index.html"><h1 class="logo">Blog<span class="logo-bold">DeCafé</span></h1></a>
@@ -51,5 +50,7 @@
             </nav>
         </div>
     </footer>
+
+    <script src="JS/modernizr.js"></script>
 </body>
 </html>

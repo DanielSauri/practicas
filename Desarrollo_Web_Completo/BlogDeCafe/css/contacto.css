@@ -13,18 +13,18 @@
     margin-bottom: 3rem;
 }
 
-.main img {
+.contacto__bg {
+    background-image: url(../img/contacto.jpg);
+    background-repeat: no-repeat;
     width: 100%;
-    height: 45rem;
+    height: 40rem;
 }
 
 .formulario {
-    position: absolute;
-    top: 105rem;
-    left: 10%;
+    margin: -5rem auto 0;
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 90%;
     height: auto;
     padding: 4rem;
     background-color: var(--blanco);
@@ -48,18 +48,8 @@ input:last-child {
     cursor: pointer;
 }
 
-.footer {
-    margin-top: 40rem;
-}
-
 @media (max-width: 768px) {
     input:last-child {
         width: auto;
-    }
-}
-
-@media (max-width: 380px) {
-    .formulario {
-        top: 95rem;
     }
 }

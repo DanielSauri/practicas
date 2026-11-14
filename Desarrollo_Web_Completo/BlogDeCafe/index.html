@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog de café donde podrás encontrar información sobre nuestros cursos y talleres">
+    <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon.ico">
     <title>Blog De Café</title>
     <link rel="preload" href="css/normalize.css" as="style">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;family=PT+Sans:wght@400;700&amp;display=swap" crossorigin="crossorigin" as="font">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;family=PT+Sans:wght@400;700&amp;display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&amp;family=PT+Sans:wght@400;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/globales.css">
     <link rel="stylesheet" href="css/index.css">
@@ -29,40 +31,49 @@
     <div class="contenedor contenido-principal">
         <main class="blog">
             <h2>Nuestro blog</h2>
-            <div class="entradas">
-                <img src="img/blog1.jpg" alt="grano de café" width="500px" height="auto">
+            <article class="entradas">
+                <picture>
+                    <source srcset="img/blog1.webp" type="image/webp">
+                    <img loading="lazy" src="img/blog1.jpg" alt="tipos de grano de café" width="500px" height="auto">
+                </picture>
                 <h3>Tipos de grano de café</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis enim ratione aliquam quasi animi repellendus eaque minus! Repudiandae, reiciendis dolore.</p>
                 <a href="entrada.html" class="enlace-entrada"><p class="entrada">Leer entrada</p></a>
-            </div>
-            <div class="entradas">
-                <img src="img/blog2.jpg" alt="grano de café" width="500px" height="auto">
+            </article>
+            <article class="entradas">
+                <picture>
+                    <source srcset="img/blog2.webp" type="image/webp">
+                    <img loading="lazy" src="img/blog2.jpg" alt="deliciosas recetas de café" width="500px" height="auto">
+                </picture>
                 <h3>Deliciosas recetas de café</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis enim ratione aliquam quasi animi repellendus eaque minus! Repudiandae, reiciendis dolore.</p>
                 <a href="entrada.html" class="enlace-entrada"><p class="entrada">Leer entrada</p></a>
-            </div>
-            <div class="entradas">
-                <img src="img/blog3.jpg" alt="grano de café" width="500px" height="auto">
+            </article>
+            <article class="entradas">
+                <picture>
+                    <source srcset="img/blog3.webp" type="image/webp">
+                    <img loading="lazy" src="img/blog3.jpg" alt="beneficios del café" width="500px" height="auto">
+                </picture>
                 <h3>Beneficios del café</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis enim ratione aliquam quasi animi repellendus eaque minus! Repudiandae, reiciendis dolore.</p>
                 <a href="entrada.html" class="enlace-entrada"><p class="entrada">Leer entrada</p></a>
-            </div>
+            </article>
         </main>
         <aside class="sidebar">
             <h2>Nuestros cursos y talleres</h2>
-            <div class="cursos">
-                <h3>Técnicas de extracción de café</h3>
-                <p>Precio: <span>Gratis</span></p>
-                <p>Cupo: <span>20</span></p>
-                <a href="entrada.html"><p class="informacion">Más información sobre nuestros cursos</p></a>
-            </div>
+            <ul class="cursos">
+                <li><h3>Técnicas de extracción de café</h3></li>
+                <li><p>Precio: <span>Gratis</span></p></li>
+                <li><p>Cupo: <span>20</span></p></li>
+                <li><a href="entrada.html"><p class="informacion">Más información sobre nuestros cursos</p></a></li>
+            </ul>
             
-            <div class="cursos">
-                <h3>4 recetas de café para principiantes</h3>
-                <p>Precio: <span>Gratis</span></p>
-                <p>Cupo: <span>20</span></p>
-                <a href="entrada.html"><p class="informacion">Más información sobre nuestros cursos</p></a>
-            </div>
+            <ul class="cursos">
+                <li><h3>4 recetas de café para principiantes</h3></li>
+                <li><p>Precio: <span>Gratis</span></p></li>
+                <li><p>Cupo: <span>20</span></p></li>
+                <li><a href="entrada.html"><p class="informacion">Más información sobre nuestros cursos</p></a></li>
+            </ul>
         </aside>
     </div>
     <footer class="footer">
@@ -75,5 +86,7 @@
             </nav>
         </div>
     </footer>
+
+    <script src="JS/modernizr.js"></script>
 </body>
 </html>
