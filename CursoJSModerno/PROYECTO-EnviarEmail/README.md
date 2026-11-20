@@ -1,12 +1,12 @@
 # Enviar email
 
 ## Descripción del proyecto
-Simulación de una tienda en linea donde se puede agregar diferentes cursos al carrito, eliminar por cantidad o vaciar carrito de compras.
+Simulación de envio de mensaje con un email de destino, email destino opcional, asunto y mensaje.
 
 ## Tecnologías
 
 ### JavaScript
-Utilizado para obtener la informacion de los cursos y agregarlos al carrito, eliminar por cantidad y vaciar carrito.
+Utilizado para obtener la informacion ingresada en los campos, agregar validacion y simular un envio exitoso.
 
 ## Demo
 https://enviaremailproyectbyds.netlify.app/
