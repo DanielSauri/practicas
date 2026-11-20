@@ -3,13 +3,21 @@ const listaCursos = document.querySelector('#lista-cursos');
 const contenedorCarrito = document.querySelector('#lista-carrito tbody');
 const vaciarCarrito = document.querySelector("#vaciar-carrito");
 const btnEliminar = document.querySelector("#btnEliminar");
-let articulosCarrito = [];
+let articulosCarrito = JSON.parse( localStorage.getItem( 'articulosCarrito' ));
 
+document.addEventListener( 'DOMContentLoaded', () => {
+    if( articulosCarrito ) {
+        guardarDatos( articulosCarrito );
+    }
+});
 document.addEventListener('click', e => {
-    if(e.target.classList.contains('agregar-carrito')){
+    if( e.target.classList.contains('agregar-carrito') ){
         e.preventDefault();
         let curso = e.target.parentElement.parentElement;
-        obtenerDatos(curso);
+        if( articulosCarrito === null ) {
+            articulosCarrito = [];
+        }
+        obtenerDatos( curso );
     }
 })
 
@@ -26,12 +34,12 @@ function obtenerDatos(curso) {
         cantidad: 1
     }
 
-    const existe = articulosCarrito.some( curso => curso.id == cursoInfo.id);
+    const existe = articulosCarrito.some( curso => curso.id == cursoInfo.id );
     if(!existe){
         articulosCarrito = [...articulosCarrito, cursoInfo];
     }else {
         const cursos = articulosCarrito.map( curso => {
-            if(curso.id != cursoInfo.id){
+            if( curso.id != cursoInfo.id ){
                 return curso;
             }else {
                 curso.cantidad++;
@@ -40,12 +48,13 @@ function obtenerDatos(curso) {
         })
         articulosCarrito = cursos
     }
-    guardarDatos(articulosCarrito);
+    guardarArticulos(); //Guarda los articulos en localStorage
+    guardarDatos( articulosCarrito );
 }
 
 function guardarDatos(articulosCarrito) {        
     limpiarHtml();
-    //Necesite ayuda aqui para usar el forEach y para usar curso dentro de innerHtml
+    articulosCarrito = JSON.parse( localStorage.getItem( 'articulosCarrito' ) );
     articulosCarrito.forEach( curso => {
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -65,18 +74,14 @@ function guardarDatos(articulosCarrito) {
                 <a href="#" class="borrar-curso" data-id="${curso.id}">X</a>
             </td>
         `
-        contenedorCarrito.appendChild(row);
+        contenedorCarrito.appendChild( row );
     })
 }
 
 function limpiarHtml() {
-    // if(contenedorCarrito.firstChild){
-    //     contenedorCarrito.innerHTML = ``;
-    // } yo lo hice de esta forma aunque no es la mejor manera de hacerlo
-
-    while(contenedorCarrito.firstChild){
-        contenedorCarrito.removeChild(contenedorCarrito.firstChild);
-    } // me tuve que apoyar del video para esto. sabia que tenia que usar remove child y firstchild pero faltaba
+    while( contenedorCarrito.firstChild ){
+        contenedorCarrito.removeChild( contenedorCarrito.firstChild );
+    }
 }
 
 function eliminarCarrito(e) {
@@ -89,8 +94,8 @@ function eliminarProducto(e) {
     const id = e.target.getAttribute('data-id');
     e.preventDefault();
     articulosCarrito = articulosCarrito.filter( curso => {
-        if(curso.id == id){
-            if(curso.cantidad == 1){
+        if( curso.id == id ){
+            if( curso.cantidad == 1 ){
                 return curso.id !== id
             }else {
                 return curso.cantidad--
@@ -100,5 +105,10 @@ function eliminarProducto(e) {
         }
     })
 
-    guardarDatos(articulosCarrito)
+    guardarArticulos();
+    guardarDatos( articulosCarrito )
+}
+
+function guardarArticulos() {
+    localStorage.setItem( 'articulosCarrito', JSON.stringify( articulosCarrito ) );
 }
