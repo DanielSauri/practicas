@@ -9,4 +9,4 @@ Simulación de una tienda en linea donde se puede agregar diferentes cursos al c
 Utilizado para obtener la informacion de los cursos y agregarlos al carrito, eliminar por cantidad y vaciar carrito.
 
 ## Demo
-https://carritoproyectbyds.netlify.app/
+https://enviaremailproyectbyds.netlify.app/
