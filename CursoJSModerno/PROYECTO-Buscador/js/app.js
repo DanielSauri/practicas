@@ -1,5 +1,5 @@
 const marca = document.querySelector('#marca');
-const año = document.querySelector('#year');
+const year = document.querySelector('#year');
 const minimo = document.querySelector('#minimo');
 const maximo = document.querySelector('#maximo');
 const puertas = document.querySelector('#puertas');
@@ -53,7 +53,7 @@ function generarYear() {
     for (let i = 2020; i >= 2015; i--) {
         const option = document.createElement('OPTION');
         option.textContent = i;
-        año.appendChild(option);
+        year.appendChild(option);
     }
     filtrarAutos();
 }
